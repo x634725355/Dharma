@@ -37,9 +37,6 @@ export default {
         tagsList: {
             get() {
                 return store.state.tagsList;
-            },
-            set(newValue) {
-                store.state.tagsList = newValue;
             }
         },
         showTags() {
@@ -55,45 +52,20 @@ export default {
         },
         // 关闭单个标签
         closeTags(index) {
-            const delItem = this.tagsList.splice(index, 1)[0];
-            const item = this.tagsList[index] ? this.tagsList[index] : this.tagsList[index - 1];
-            if (item) {
-                delItem.path === this.$route.fullPath && this.$router.push(item.path);
-            } else {
-                this.$router.push('/');
-            }
+            store.closeTags(index, this);
         },
         // 关闭全部标签
         closeAll() {
-            this.tagsList = [];
+            store.closeAll();
             this.$router.push('/');
         },
         // 关闭其他标签
         closeOther() {
-            const curItem = this.tagsList.filter((item) => {
-                return item.path === this.$route.fullPath;
-            });
-            this.tagsList = curItem;
+            store.closeOther(this.$route.fullPath);
         },
         // 设置标签
         setTags(route) {
-            console.log('设置标签', route);
-            const isExist = this.tagsList.some((item) => {
-                return item.path === route.fullPath;
-            });
-            if (!isExist) {
-                if (this.tagsList.length >= 8) {
-                    this.tagsList.shift();
-                }
-                this.tagsList.push({
-                    title: route.meta.title,
-                    path: route.fullPath,
-                    name: route.name
-                });
-            }
-            store.tags(this.tagsList);
-            // 将当前路由放在sessionStorage里面
-            sessionStorage.setItem('route', JSON.stringify(this.tagsList));
+            store.setTags(route);
         },
         handleTags(command) {
             command === 'other' ? this.closeOther() : this.closeAll();
@@ -105,14 +77,11 @@ export default {
         }
     },
     created() {
-        const route = JSON.parse(sessionStorage.getItem('route'));
-        if (route) {
-            this.tagsList = route;
-        }
+        store.created();
 
         this.setTags(this.$route);
         // 监听关闭当前页面的标签页
-        store.closeCurrentTags = store.closeCurrentTags.bind(this);
+        // store.closeCurrentTags = store.closeCurrentTags.bind(this);
      
     }
 };

@@ -39,7 +39,7 @@
             </template>
         </el-menu>
     </div>
-</template>
+</template>  
 
 <script>
 import { store } from "./store";

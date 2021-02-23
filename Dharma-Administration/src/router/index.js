@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../components/common/Home.vue";
+import Dashboard from "../page/dashboard.vue";
 
-const dashboard = { template: '<div>dashboard</div>' }
 
 const routes = [
     { path: "/", redirect: "/home" },
@@ -11,7 +11,7 @@ const routes = [
         component: Home,
         meta: { title: '首页' },
         children: [
-            { path: "/dashboard", name: "dashboard", component: dashboard, meta: { title: '系统首页' } },
+            { path: "/dashboard", name: "dashboard", component: Dashboard, meta: { title: '系统首页' } },
         ],  
     }
 ];
