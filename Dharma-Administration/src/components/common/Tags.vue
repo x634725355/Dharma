@@ -80,6 +80,8 @@ export default {
         store.created();
 
         this.setTags(this.$route);
+
+        console.log("tagsList", this.tagsList);
         // 监听关闭当前页面的标签页
         // store.closeCurrentTags = store.closeCurrentTags.bind(this);
      
@@ -129,6 +131,7 @@ export default {
 
 .tags-li.active {
     color: #fff;
+    background-color: var(--main-color);
 }
 
 .tags-li-title {

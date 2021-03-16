@@ -3,7 +3,8 @@ import App from './App.vue';
 import ElementPlus from 'element-plus';
 
 import 'element-plus/lib/theme-chalk/index.css';
-import "./assets/css/main.css";
+import './assets/css/main.css';
+import './assets/css/common.css'
 
 import { directives } from './components/common/directives';
 import { router } from "./router/index";

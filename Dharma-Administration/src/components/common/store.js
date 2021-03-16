@@ -53,7 +53,7 @@ export const store = {
             console.log('setMessageAction triggered with', newValue)
         }
 
-        this.state.message = newValue
+        this.state.message = newValue;
     },
 
     clearMessageAction() {
@@ -83,10 +83,10 @@ export const store = {
                 name: route.name
             });
 
-            console.log("进来了", this.state.tagsList);
+            console.log("进来了", JSON.stringify(this.state.tagsList));
         }
 
-        this.tags(this.state.tagsList);
+        // this.tags(this.state.tagsList);
         // 将当前路由放在sessionStorage里面
         sessionStorage.setItem('route', JSON.stringify(this.state.tagsList));
     },

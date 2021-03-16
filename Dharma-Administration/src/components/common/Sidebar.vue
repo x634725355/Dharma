@@ -55,6 +55,11 @@ export default {
                     index: 'dashboard',
                     title: '系统首页'
                 },
+                {
+                    icon: 'el-icon-lx-home',
+                    index: 'momoHome',
+                    title: 'momo首页'
+                },
             ]
         };
     },

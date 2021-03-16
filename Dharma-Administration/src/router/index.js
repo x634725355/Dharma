@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../components/common/Home.vue";
-import Dashboard from "../page/dashboard.vue";
+import dashboard from "../page/dashboard.vue";
+import momoHome from "../page/momoHome.vue";
 
 
 const routes = [
@@ -11,7 +12,8 @@ const routes = [
         component: Home,
         meta: { title: '首页' },
         children: [
-            { path: "/dashboard", name: "dashboard", component: Dashboard, meta: { title: '系统首页' } },
+            { path: "/dashboard", name: "dashboard", component: dashboard, meta: { title: '系统首页' } },
+            { path: "/momoHome", name: "momoHome", component: momoHome, meta: { title: 'momo首页' } },
         ],  
     }
 ];
